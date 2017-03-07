@@ -6,11 +6,38 @@
 const CIPHER_METHOD = 'AES-256-CBC';
 
 function key_encrypt($string, $key, $cipher_method=CIPHER_METHOD) {
-  return "D4RK SH4D0W RUL3Z";
+  // Needs a key of length 32 (256-bit)
+  $key = str_pad($key, 32, '*');
+
+  // Create an initialization vector which randomizes the
+  // initial settings of the algorithm, making it harder to decrypt.
+  $iv_length = openssl_cipher_iv_length($cipher_method);
+  $iv = openssl_random_pseudo_bytes($iv_length);
+
+  $encrypted = openssl_encrypt($string, $cipher_method, $key, OPENSSL_RAW_DATA, $iv);
+
+  // Return $iv at front of string, need it for decoding
+  $message = $iv . $encrypted;
+
+  // Encode just ensures encrypted characters are viewable/savable
+  return base64_encode($message);
 }
 
 function key_decrypt($string, $key, $cipher_method=CIPHER_METHOD) {
-  return "PWNED YOU!";
+   // Needs a key of length 32 (256-bit)
+   $key = str_pad($key, 32, '*');
+
+   // Base64 decode before decrypting
+   $iv_with_ciphertext = base64_decode($string);
+
+   // Separate initialization vector and encrypted string
+   $iv_length = openssl_cipher_iv_length($cipher_method);
+   $iv = substr($iv_with_ciphertext, 0, $iv_length);
+   $ciphertext = substr($iv_with_ciphertext, $iv_length);
+
+   $plaintext = openssl_decrypt($ciphertext, $cipher_method, $key, OPENSSL_RAW_DATA, $iv);
+
+   return $plaintext;
 }
 
 
