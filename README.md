@@ -30,7 +30,9 @@ The following **required** functionality is completed:
   * [X]  Required: Include a response message in this README
 
 To: sydneybristow
+
 From: agent99
+
 Subject: Re: Encrypted and Signed Message
 
 Body:
