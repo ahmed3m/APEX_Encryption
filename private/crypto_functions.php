@@ -72,20 +72,20 @@ function pkey_encrypt($string, $public_key) {
 function pkey_decrypt($string, $private_key) {
   $ciphertext = base64_decode($string);
   openssl_private_decrypt($ciphertext, $decrypted, $private_key);
-  return $decrypted;  
+  return $decrypted;
 }
 
 
 // Digital signatures using public/private keys
 
 function create_signature($data, $private_key) {
-  // A-Za-z : ykMwnXKRVqheCFaxsSNDEOfzgTpYroJBmdIPitGbQUAcZuLjvlWH
-  return 'RpjJ WQL BImLcJo QLu dQv vJ oIo Iu WJu?';
+  openssl_sign($data, $raw_signature, $private_key);
+  return base64_encode($raw_signature);
 }
 
 function verify_signature($data, $signature, $public_key) {
-  // Vigenère
-  return 'RK, pym oays onicvr. Iuw bkzhvbw uedf pke conll rt ZV nzxbhz.';
+  $raw_signature = base64_decode($signature);
+  return openssl_verify($data, $raw_signature, $public_key); // returns 1 if data and signature match
 }
 
 ?>
