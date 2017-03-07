@@ -1,6 +1,6 @@
 # Project 5 - Encryption
 
-Time spent: **1** hours spent in total
+Time spent: **4** hours spent in total
 
 ## User Stories
 
@@ -52,15 +52,15 @@ Kw8a+0KE7jmjpOsZg7tGZGQrb82pSFyTEsoMvVu7O1yNratn5FsXQdGGxiarLXSb
 -----END PUBLIC KEY-----
 
 7\. Agent Messages
-  * [ ]  Required: Repair the dropbox code
-  * [ ]  Required: Repair the messages area
-  * [ ]  Required: Display encrypted messages for all agents
-  * [ ]  Required: Messages indicate whether the message signature is valid
-  * [ ]  Required: Your messages are automatically decrypted
+  * [X]  Required: Repair the dropbox code
+  * [X]  Required: Repair the messages area
+  * [X]  Required: Display encrypted messages for all agents
+  * [X]  Required: Messages indicate whether the message signature is valid
+  * [X]  Required: Your messages are automatically decrypted
 
 8\. Identify the Double Agent
-  * [ ]  Required: Decrypt as many email messages as possible
-  * [ ]  Required: Identify the double agent: ____________________
+  * [X]  Required: Decrypt as many email messages as possible
+  * [X]  Required: Identify the double agent: Natasha
 
 The following objectives are **optional**:
 
